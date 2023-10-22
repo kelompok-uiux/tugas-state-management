@@ -7,9 +7,9 @@
     </button>
 <!--     :style="color" -->
 
-        <div className="flex mt-20"  >
+        <div className="flex mt-14">
           <div className='flex-1 w-64 '
-          :style="{backgroundColor: color} "
+    
           >
             Color  nih bos
           </div>
@@ -20,12 +20,6 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-
-// import Vuex from 'vuex';
-// Vue.use(Vuex);
-// Vue.prototype.$store = store;
-
 export default {
   computed: {
     color(){
@@ -34,8 +28,6 @@ export default {
   },
   methods: {
     changeColor: function(){
-      console.log("this: ", this)
-     
       this.$store.dispatch('changeColor');
     }
   }

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Colorcolor from './components/colorcolor.vue'
+import Colorcolor from './components/Colorcolor.vue'
 export default {
   name: 'app',
   data () {
