@@ -1,44 +1,52 @@
-import { makeObservable, observable, action } from "mobx";
+// Redux Actions with Redux Toolkit
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 
-document.addEventListener("DOMContentLoaded", () => {
-  class ColorStore {
-    greenBox = "green";
-    blueBox = "blue";
+const initialState = {
+  blueDivColor: "blue",
+};
 
-    constructor() {
-      makeObservable(this, {
-        greenBox: observable,
-        blueBox: observable,
-        toggleColor: action,
-      });
-    }
+const divSlice = createSlice({
+  name: "div",
+  initialState,
+  reducers: {
+    changeBlueColor: (state) => {
+      state.blueDivColor = state.blueDivColor === "red" ? "blue" : "red";
+    },
+  },
+});
 
-    toggleColor(targetColor) {
-      if (targetColor === "blue") {
-        if (this.blueBox === "red") {
-          this.blueBox = "blue";
-        }
-      } else {
-        this.blueBox = "red";
-      }
-    }
+const store = configureStore({
+  reducer: {
+    div: divSlice.reducer,
+  },
+});
+
+const { changeBlueColor } = divSlice.actions;
+
+document.addEventListener("DOMContentLoaded", function () {
+  const greenDiv = document.getElementById("greenBox");
+  const blueDiv = document.getElementById("blueBox");
+
+  function updateBlueDivColor() {
+    const state = store.getState().div;
+    blueDiv.className = `color-box ${state.blueDivColor}`;
   }
 
-  const colorStore = new ColorStore();
+  updateBlueDivColor();
 
-  const changeColor = (targetColor) => {
-    console.log(targetColor, colorStore.blueBox, colorStore.greenBox);
-    colorStore.toggleColor(targetColor);
-    updateBoxStyles();
-  };
+  greenDiv.addEventListener("click", () => {
+    if (store.getState().div.blueDivColor === "red") {
+      return;
+    }
+    store.dispatch(changeBlueColor());
+    updateBlueDivColor();
+  });
 
-  window.changeColor = changeColor;
-
-  const updateBoxStyles = () => {
-    const greenBox = document.getElementById("greenBox");
-    const blueBox = document.getElementById("blueBox");
-
-    greenBox.className = `color-box ${colorStore.greenBox}`;
-    blueBox.className = `color-box ${colorStore.blueBox}`;
-  };
+  blueDiv.addEventListener("click", () => {
+    const state = store.getState().div;
+    if (state.blueDivColor === "red") {
+      store.dispatch(changeBlueColor());
+      updateBlueDivColor();
+    }
+  });
 });
