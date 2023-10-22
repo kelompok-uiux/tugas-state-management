@@ -8,10 +8,10 @@
 <!--     :style="color" -->
 
         <div className="flex mt-20"  >
-          <div className='flex-1 w-64 '
+          <div className='flex-1 w-64 ' id="kotakmerah"
           :style="{backgroundColor: color} "
           >
-            Color  nih bos
+            Color  
           </div>
 
         </div>
@@ -20,11 +20,7 @@
 </template>
 
 <script>
-// import Vue from 'vue'
 
-// import Vuex from 'vuex';
-// Vue.use(Vuex);
-// Vue.prototype.$store = store;
 
 export default {
   computed: {
@@ -42,3 +38,13 @@ export default {
 }
 
 </script>
+
+
+<style>
+
+#kotakmerah {
+  width: 300px;
+  padding: 50px;
+  margin: 20px;
+}
+</style>

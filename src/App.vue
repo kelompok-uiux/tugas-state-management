@@ -2,8 +2,6 @@
   <div id="app">
     <colorcolor></colorcolor>
     
-
-    
   </div>
 </template>
 
@@ -29,7 +27,7 @@ export default {
 
 /* CSS */
 .button-1 {
-  background-color: #EA4C89;
+  background-color: #006400;
   border-radius: 8px;
   border-style: none;
   box-sizing: border-box;
@@ -57,6 +55,6 @@ export default {
 
 .button-1:hover,
 .button-1:focus {
-  background-color: #F082AC;
+  background-color: #7FFF00;
 }
 </style>
