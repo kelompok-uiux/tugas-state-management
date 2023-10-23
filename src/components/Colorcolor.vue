@@ -9,7 +9,8 @@
 
         <div className="flex mt-20"  >
           <div className='flex-1 w-64 ' id="kotakmerah"
-          :style="{backgroundColor: color} "
+          v-on:click="changeColor"
+          :style="{backgroundColor: colorDivBlue === '#FF0000'? colorDivBlue : color} "
           >
             Color  
           </div>
@@ -26,7 +27,8 @@ export default {
   computed: {
     color(){
       return this.$store.getters.getColor;
-    }
+    },
+
   },
   methods: {
     changeColor: function(){
@@ -34,6 +36,7 @@ export default {
      
       this.$store.dispatch('changeColor');
     }
+    
   }
 }
 
