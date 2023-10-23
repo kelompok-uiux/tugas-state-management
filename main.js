@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const colorStore = new ColorStore();
 
   const changeColor = (targetColor) => {
-    console.log(targetColor, colorStore.blueBox, colorStore.greenBox);
     colorStore.toggleColor(targetColor);
     updateBoxStyles();
   };
