@@ -6,8 +6,8 @@ Vue.use(Vuex);
 export const store = new Vuex.Store({
   strict: true,
   state: {
-    color: "#87CEFA	",
-    colorDivBlue: "#87CEFA",
+    color: "#0000ff	",
+    colorDivBlue: "#0000ff",
   },
   getters: {
     getColor: (state) => {
@@ -19,23 +19,25 @@ export const store = new Vuex.Store({
   },
   mutations: {
     changeColor: (state) => {
-      if (state.color === "#87CEFA") {
-        state.color = "#FF0000";
-        state.colorDivBlue = "#FF0000";
-        console.log(state.colorDivBlue);
+
+      if (state.color=== '#0000ff	' ){
+        state.color = '#FF0000'
+        console.log("atas: ",state.colorDivBlue)
       }
-      if (state.colorDivBlue === "#FF0000") {
-        state.colorDivBlue = "#87CEFA";
-      }
-      // else{
-      //   state.color = "#87CEFA	"
-      // }
-      console.log("warna: ", state.color);
     },
+    changeColortoBlue: (state) => {
+      if (state.color == '#FF0000'){
+        state.color = '#0000ff	'
+        console.log("changeColortoBlue", state.color )
+      }
+    }
   },
   actions: {
     changeColor: (context) => {
       context.commit("changeColor");
     },
+    changeColortoBlue: (context) => {
+      context.commit("changeColortoBlue");
+    }
   },
 });

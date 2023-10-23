@@ -1,17 +1,14 @@
 <template>
   <div>
-    <button class="button-1" role="button"
+    <div class="color-box green"
       v-on:click="changeColor" 
-      >  Color Switcher
-    </button>
-    <div>
-      <div id="kotakmerah"
-      v-on:click="changeColor"
-      :style="{backgroundColor: colorDivBlue === '#FF0000'? colorDivBlue : color} "
-      >
-        Color  
-      </div>
+    >
     </div>
+      <div class="color-box blue"
+      v-on:click="changeColortoBlue"
+      :style="{backgroundColor: color}"
+      >  
+      </div>
   </div>
 </template>
 
@@ -28,6 +25,9 @@
         console.log("this: ", this)
       
         this.$store.dispatch('changeColor');
+      },
+      changeColortoBlue: function(){
+        this.$store.dispatch('changeColortoBlue');
       }
       
     }
@@ -36,9 +36,22 @@
 
 
 <style>
-  #kotakmerah {
-    width: 300px;
-    padding: 50px;
-    margin: 20px;
+  .color-box {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .green {
+    background-color: green;
+  }
+
+  .blue {
+    background-color: blue;
+  }
+
+  .red {
+    background-color: red;
   }
 </style>
